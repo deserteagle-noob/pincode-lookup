@@ -3,14 +3,14 @@ const pincodeSearchBtn = document.getElementById('pincodeSearchBtn');
 const result = document.getElementById('result');
 
 pincodeSearchBtn.addEventListener('click', () => {
-    pincode = pincodeInput.value.trim();
+    let pincode = pincodeInput.value.trim();
 
     if (pincode === "") {
         result.innerHTML = "Please enter a pincode!";
         return
     }
 
-    fetch(`http://localhost:3000/${pincode}`)
+    fetch(`/api/pincode/${pincode}`)
         .then(response => response.json())
         .then(postOffices => {
             if (Array.isArray(postOffices)) {
